@@ -1,0 +1,54 @@
+1. Setup .env ke DBnya
+	- PHP artisan migrate
+2. Bikin Model dri nama Tabelnya
+	- PHP artisan make: model Product -m -c
+3. Di Migration, masukkan kolom" dan Data Typenya
+	- Setelah itu PHP artisan migrate
+4. Di Model Product,buat protected fillable
+	- protected $fullfill = ['nama', 'price', dll];
+5. Buat Folder layout view-> app.blade.php -> Sambungkan bootstrap
+	di welcome.blade.app
+	- @extends('layout.app')
+	- @section('contents')
+	  @endsection
+	di app.blade.php
+	- @yield('content')
+6. Pada Product Controller, buat function
+7. Masukkan route yang benar
+Route::get('/', [ProductController::class, 'getProduct'])->name('product.view')
+8.DI Form, masukkan method, kasih name untuk setiap kolom form untuk request di 
+9. Buat di route untuk product::post
+10. Buat function di productcontroller untuk product create yang berisi parameter request dari nama yg di form => nama yg di db request('namanya')
+Product::create([
+            'nama1' => request('nama'),
+            'description1' => request('description'),
+            'stock1' => request('stock'),
+            'price1' => request('price'),
+            'production_date1' => request('production_date'),
+        ]);
+
+11. UNTUK MENAMPILKAN/GET PRODUCT
+- Buat variable baru, $books =  product:all , return view + ,compact('books')
+- Iterasi for else
+12. Di function create product,
+return redirect()->route('product.view');
+untuk menampilkan datanya
+13. Buat function request validation
+$request -> validate([
+        'nama' => ['required', 'min:5'],
+        'description' => ['required', 'min:20'],
+        'stock' => ['required', 'min:0'],
+        'price' => ['required', 'min:100'],
+        'production_date' => ['required'],
+    ])
+14. Masukkan Validation di html
+    @error('nama')
+    <p class="alert alert-danger">{{$message}}</p>
+    @enderror
+15. Masukkan value {{old('nama')}}
+16. Untuk update, 
+	- bikin fe baru, 
+	- masukkan di route untuk get dlu, 
+	- masukkan function baru sesuai idUpdate di fe update valuenya jadi $book -> name dsb
+17. Bikin patch/put route -> masukkan ke formnya yg di page update
+18. Untuk delete, bikin route-> product controller-> delete aja

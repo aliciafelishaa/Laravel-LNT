@@ -1,0 +1,11 @@
+.header-1-start{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.card-container{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
